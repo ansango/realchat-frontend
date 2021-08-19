@@ -1,8 +1,11 @@
+import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { ButtonBase } from "../ui/buttons/ButtonBase";
 import { FormLabel, FormInput } from "../ui/forms";
 
 export const Home = ({ socket }) => {
+  const router = useHistory();
+
   const [formValues, handleInputChange] = useForm({
     userName: "",
     roomName: "",
@@ -17,6 +20,7 @@ export const Home = ({ socket }) => {
       return;
     }
     socket.emit("joinRoom", { userName, roomName });
+    router.push(`/chat/${roomName}/${userName}`);
   };
 
   return (

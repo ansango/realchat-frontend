@@ -11,17 +11,15 @@ const App = () => {
   return (
     <ContainerApp>
       <Router>
-        <div>
-          <NavBar />
-          <Switch>
-            <Route path="/" exact>
-              <Home socket={socket} />
-            </Route>
-            <Route path="/chat/:roomName/:userName">
-              <Room socket={socket} />
-            </Route>
-          </Switch>
-        </div>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact>
+            <Home socket={socket} />
+          </Route>
+          <Route path="/chat/:roomName/:userName">
+            <Room socket={socket} />
+          </Route>
+        </Switch>
       </Router>
     </ContainerApp>
   );

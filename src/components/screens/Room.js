@@ -7,8 +7,8 @@ export const Room = ({ socket }) => {
   return (
     <>
       <h2>Room: {roomName}</h2>
-      <Chat roomname={roomName} username={userName} socket={socket} />
-      <Process />
+      <Chat roomName={roomName} userName={userName} socket={socket} />
+      {/* <Process /> */}
     </>
   );
 };

@@ -48,19 +48,23 @@ export const Chat = ({ userName, roomName, socket }) => {
   console.log(messages, "mess");
 
   return (
-    <div>
-      <div>
-        <h2>
+    <div className="flex p-4 justify-between h-96 flex-col bg-blue-200">
+      <div className="w-full text-left">
+        <h2 className="border-b border-blue-100 pb-4">
           {userName} <span style={{ fontSize: "0.7rem" }}>in {roomName}</span>
         </h2>
       </div>
-      <div>
+      <div className="h-4/5 flex overflow-y-auto content-start w-full flex-col">
         {messages.map((i) => {
           if (i.userName === userName) {
             return (
-              <div className="message">
-                <p>{i.text}</p>
-                <span>{i.userName}</span>
+              <div className="pl-2 max-w-xs ml-0">
+                <p className="text-blue-200 text-base font-light bg-blue-400 rounded-lg p-4">
+                  {i.text}
+                </p>
+                <span className="text-green-900 text-xs pl-2 font-extralight">
+                  {i.userName}
+                </span>
               </div>
             );
           } else {
