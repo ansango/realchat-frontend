@@ -1,27 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { io } from "socket.io-client";
-import Chat from "./components/Chat";
 
-import Home from "./components/Home";
-import Process from "./components/Process";
+import { Home, Room } from "./components/screens";
 import { NavBar, ContainerApp } from "./components/ui";
 
 const socket = io.connect("/");
-
-const AppMain = ({ match }) => {
-  console.log(match);
-  return (
-    <>
-      <Chat
-        roomname={match.params.roomName}
-        username={match.params.userName}
-        socket={socket}
-      />
-      <Process />
-    </>
-  );
-};
 
 const App = () => {
   return (
@@ -33,7 +17,9 @@ const App = () => {
             <Route path="/" exact>
               <Home socket={socket} />
             </Route>
-            <Route path="/chat/:roomName/:userName" component={AppMain} />
+            <Route path="/chat/:roomName/:userName">
+              <Room socket={socket} />
+            </Route>
           </Switch>
         </div>
       </Router>

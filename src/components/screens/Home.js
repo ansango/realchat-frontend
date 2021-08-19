@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const Home = ({ socket }) => {
+export const Home = ({ socket }) => {
   const [userName, setUserName] = useState("");
   const [roomName, setRoomName] = useState("");
 
@@ -32,5 +32,3 @@ const Home = ({ socket }) => {
     </div>
   );
 };
-
-export default Home;

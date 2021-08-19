@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { process } from "../store/action";
-import { decrypt, encrypt } from "../helpers/aes";
+import { process } from "../../../store/action";
+import { decrypt, encrypt } from "../../../helpers/aes";
 
-const Chat = ({ userName, roomName, socket }) => {
+export const Chat = ({ userName, roomName, socket }) => {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -90,5 +90,3 @@ const Chat = ({ userName, roomName, socket }) => {
     </div>
   );
 };
-
-export default Chat;
