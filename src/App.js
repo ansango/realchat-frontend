@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { io } from "socket.io-client";
-import Chat from "./componnets/Chat";
+import Chat from "./components/Chat";
 
-import Home from "./componnets/Home";
-import Process from "./componnets/Process";
+import Home from "./components/Home";
+import Process from "./components/Process";
+import { NavBar, ContainerApp } from "./components/ui";
 
 const socket = io.connect("/");
 
@@ -24,17 +25,19 @@ const AppMain = ({ match }) => {
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <h1>App</h1>
-        <Switch>
-          <Route path="/" exact>
-            <Home socket={socket} />
-          </Route>
-          <Route path="/chat/:roomName/:userName" component={AppMain} />
-        </Switch>
-      </div>
-    </Router>
+    <ContainerApp>
+      <Router>
+        <div>
+          <NavBar />
+          <Switch>
+            <Route path="/" exact>
+              <Home socket={socket} />
+            </Route>
+            <Route path="/chat/:roomName/:userName" component={AppMain} />
+          </Switch>
+        </div>
+      </Router>
+    </ContainerApp>
   );
 };
 
