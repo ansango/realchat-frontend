@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Login } from "../ui/components/Login";
 
 export const Home = ({ socket }) => {
   const [userName, setUserName] = useState("");
@@ -14,8 +15,9 @@ export const Home = ({ socket }) => {
     }
   };
   return (
-    <div>
+    <>
       <h1>Welcome to ChatApp</h1>
+      <Login />
       <input
         placeholder="Input your user name"
         value={userName}
@@ -29,6 +31,6 @@ export const Home = ({ socket }) => {
       <NavLink to={`/chat/${roomName}/${userName}`}>
         <button onClick={sendData}>Join</button>
       </NavLink>
-    </div>
+    </>
   );
 };
