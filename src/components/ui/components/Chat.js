@@ -69,17 +69,22 @@ export const Chat = ({ userName, roomName, socket }) => {
             );
           } else {
             return (
-              <div className="message mess-right">
-                <p>{i.text} </p>
-                <span>{i.userName}</span>
+              <div className="pl-2 max-w-xs flex ml-auto flex-col pr-2 mr-0">
+                <p className="text-blue-200 text-base font-light bg-blue-400 rounded-lg p-4">
+                  {i.text}
+                </p>
+                <span className="text-green-900 text-xs pl-2 font-extralight">
+                  {i.userName}
+                </span>
               </div>
             );
           }
         })}
         <div ref={messagesEndRef} />
       </div>
-      <div>
+      <div className="h-12 flex">
         <input
+          className="bg-blue-100 w-3/4 pl-4 rounded-md"
           placeholder="enter your message"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -89,7 +94,7 @@ export const Chat = ({ userName, roomName, socket }) => {
             }
           }}
         ></input>
-        <button onClick={sendData}>Send</button>
+        <button className="bg-blue-900 w-1/4 rounded-lg" onClick={sendData}>Send</button>
       </div>
     </div>
   );
