@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { process } from "../store/action";
 import { decrypt, encrypt } from "../helpers/aes";
 
-const Chat = ({ username, roomname, socket }) => {
+const Chat = ({ userName, roomName, socket }) => {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -15,13 +15,13 @@ const Chat = ({ username, roomname, socket }) => {
   useEffect(() => {
     socket.on("message", (data) => {
       // decrypt
-      const ans = decrypt(data.text, data.username);
+      const ans = decrypt(data.text, data.userName);
       dispatchProcess(false, ans, data.text);
       console.log(ans);
       let temp = messages;
       temp.push({
         userId: data.userId,
-        username: data.username,
+        userName: data.userName,
         text: ans,
       });
       setMessages([...temp]);
@@ -51,23 +51,23 @@ const Chat = ({ username, roomname, socket }) => {
     <div>
       <div>
         <h2>
-          {username} <span style={{ fontSize: "0.7rem" }}>in {roomname}</span>
+          {userName} <span style={{ fontSize: "0.7rem" }}>in {roomName}</span>
         </h2>
       </div>
       <div>
         {messages.map((i) => {
-          if (i.username === username) {
+          if (i.userName === userName) {
             return (
               <div className="message">
                 <p>{i.text}</p>
-                <span>{i.username}</span>
+                <span>{i.userName}</span>
               </div>
             );
           } else {
             return (
               <div className="message mess-right">
                 <p>{i.text} </p>
-                <span>{i.username}</span>
+                <span>{i.userName}</span>
               </div>
             );
           }
