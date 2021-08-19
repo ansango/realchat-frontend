@@ -1,36 +1,45 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Login } from "../ui/components/Login";
+import { useForm } from "../../hooks/useForm";
+import { ButtonBase } from "../ui/buttons/ButtonBase";
+import { FormLabel, FormInput } from "../ui/forms";
 
 export const Home = ({ socket }) => {
-  const [userName, setUserName] = useState("");
-  const [roomName, setRoomName] = useState("");
+  const [formValues, handleInputChange] = useForm({
+    userName: "",
+    roomName: "",
+  });
+  const { userName, roomName } = formValues;
 
-  const sendData = () => {
-    if (userName !== "" && roomName !== "") {
-      socket.emit("joinRoom", { userName, roomName });
-    } else {
-      alert("username and roomname are must!");
-      window.location.reload();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (userName.trim().length === 0 || roomName.trim().length === 0) {
+      alert("Please enter user and room!");
+      return;
     }
+    socket.emit("joinRoom", { userName, roomName });
   };
+
   return (
     <>
-      <h1>Welcome to ChatApp</h1>
-      <Login />
-      <input
-        placeholder="Input your user name"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      ></input>
-      <input
-        placeholder="Input the room name"
-        value={roomName}
-        onChange={(e) => setRoomName(e.target.value)}
-      ></input>
-      <NavLink to={`/chat/${roomName}/${userName}`}>
-        <button onClick={sendData}>Join</button>
-      </NavLink>
+      <form className="grid grid-cols-1 gap-2" onSubmit={handleSubmit}>
+        <FormLabel name="User name" />
+        <FormInput
+          type="text"
+          placeholder="Enter your username"
+          name="userName"
+          value={userName}
+          onChange={handleInputChange}
+        />
+        <FormLabel name="Room name" />
+        <FormInput
+          type="text"
+          placeholder="Enter a Room's key"
+          name="roomName"
+          value={roomName}
+          onChange={handleInputChange}
+        />
+        <ButtonBase type="submit">Submit</ButtonBase>
+      </form>
     </>
   );
 };
