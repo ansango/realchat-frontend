@@ -1,9 +1,9 @@
-export const ButtonBase = ({ children, onClick, type = "default" }) => {
-  const isDefault = type === "default";
-  const isDanger = type === "danger";
-  const isWarning = type === "warning";
-  const isSuccess = type === "success";
-  const isBlank = type === "blank";
+export const ButtonBase = ({ children, onClick, kind = "default" }) => {
+  const isDefault = kind === "default";
+  const isDanger = kind === "danger";
+  const isWarning = kind === "warning";
+  const isSuccess = kind === "success";
+  const isBlank = kind === "blank";
   return (
     <>
       {isDefault && <Default children={children} onClick={onClick} />}

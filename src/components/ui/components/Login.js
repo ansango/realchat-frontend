@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "../../../hooks/useForm";
+import { ButtonBase } from "../buttons/ButtonBase";
 import { FormInput } from "../forms/FormInput";
 
 export const Login = () => {
@@ -29,7 +30,7 @@ export const Login = () => {
         value={roomName}
         onChange={handleInputChange}
       />
-      <button type="submit">Submit</button>
+      <ButtonBase type="submit">Submit</ButtonBase>
     </form>
   );
 };

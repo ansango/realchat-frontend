@@ -6,7 +6,7 @@ export const ButtonTheme = () => {
   const [colorTheme, setTheme] = useTheme();
   const onTheme = () => setTheme(colorTheme);
   return (
-    <ButtonBase onClick={onTheme} type={"blank"}>
+    <ButtonBase onClick={onTheme} kind={"blank"}>
       {colorTheme === "dark" ? (
         <SunIcon size={20} className="text-blue-200" />
       ) : (
