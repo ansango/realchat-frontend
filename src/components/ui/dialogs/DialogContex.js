@@ -8,8 +8,7 @@ export const modalReducer = (state, action) => {
     case "SET_MODAL":
       return {
         ...state,
-        title: payload.title,
-        description: payload.description,
+        ...payload,
       };
     case "OPEN_MODAL":
       return {
@@ -26,14 +25,16 @@ const ModalState = ({ children }) => {
     isOpen: false,
     title: "",
     description: "",
+    btnOk: { active: true, text: "OK", action: () => {} },
+    btnCancel: { active: false, text: "Cancel", action: () => {} },
   };
 
   const [state, dispatch] = useReducer(modalReducer, initialState);
 
-  const setModal = ({ title, description }) =>
-    dispatch({ type: "SET_MODAL", payload: { title, description } });
+  const setModal = (payload) => dispatch({ type: "SET_MODAL", payload });
   const openModal = ({ isOpen }) =>
     dispatch({ type: "OPEN_MODAL", payload: { isOpen } });
+
   return (
     <modalContext.Provider value={{ ...state, setModal, openModal }}>
       {children}

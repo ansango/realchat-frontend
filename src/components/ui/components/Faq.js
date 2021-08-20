@@ -1,11 +1,11 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronIcon } from "../icons";
-export const Faq = ({ title, children }) => {
+export const Faq = ({ title , children }) => {
   return (
     <>
       <Disclosure>
         {({ open }) => (
-          <div div className="mt-2">
+          <div className="mt-2">
             <Disclosure.Button className="flex items-center justify-between w-full px-4 py-2 font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
               {title}
               <ChevronIcon
