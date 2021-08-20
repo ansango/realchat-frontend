@@ -36,7 +36,6 @@ export const Chat = ({ userName, roomName, socket }) => {
 
   useEffect(() => {
     socket.on("message", (data) => {
-      console.log("a", data);
       const ans = decrypt(data.text, data.userName);
       dispatchProcess(false, ans, data.text);
       let temp = messages;

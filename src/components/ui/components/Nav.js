@@ -2,14 +2,15 @@ import { useLocation, useHistory } from "react-router-dom";
 import { ButtonTheme } from "../buttons/ButtonTheme";
 
 export const NavBar = ({ socket }) => {
-  console.log(socket);
   const { pathname } = useLocation();
   const router = useHistory();
 
   const handleClick = () => {
     if (pathname !== "/") {
       if (window.confirm("end session")) {
+        socket.emit("forceDisconnect");
         router.push("/");
+        window.location.reload();
       }
     }
   };
