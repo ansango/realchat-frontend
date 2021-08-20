@@ -10,7 +10,7 @@ export const Home = ({ socket }) => {
     userName: "",
     roomName: "",
   });
-  
+
   const { userName, roomName } = formValues;
 
   const handleSubmit = (e) => {
@@ -26,7 +26,10 @@ export const Home = ({ socket }) => {
 
   return (
     <>
-      <form className="grid grid-cols-1 gap-2" onSubmit={handleSubmit}>
+      <h1 className="capitalize py-20 text-2xl lg:text-4xl font-bold text-center">
+        Welcome to roomers 🏠
+      </h1>
+      <form className="grid grid-cols-1 gap-2 lg:py-20" onSubmit={handleSubmit}>
         <FormLabel name="User name" />
         <FormInput
           type="text"

@@ -8,9 +8,9 @@ export const ButtonTheme = () => {
   return (
     <ButtonBase onClick={onTheme} kind={"blank"}>
       {colorTheme === "dark" ? (
-        <SunIcon size={20} className="text-blue-200" />
-      ) : (
         <MoonIcon size={20} className="text-blue-900" />
+      ) : (
+        <SunIcon size={20} className="text-blue-200" />
       )}
     </ButtonBase>
   );

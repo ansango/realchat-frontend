@@ -51,11 +51,11 @@ export const Chat = ({ userName, roomName, socket }) => {
 
   return (
     <div
-      className="flex p-4 justify-between flex-col bg-blue-50"
+      className="flex p-4 justify-between flex-col bg-blue-50 dark:bg-gray-900 border dark:border-gray-700 rounded-lg"
       style={{ height: "800px" }}
     >
       <div className="w-full text-left">
-        <h2 className="border-b border-blue-100 pb-4">
+        <h2 className="border-b border-blue-100 dark:border-gray-700 pb-4">
           {userName} <span style={{ fontSize: "0.7rem" }}>in {roomName}</span>
         </h2>
       </div>

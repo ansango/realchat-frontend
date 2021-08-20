@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { io } from "socket.io-client";
 
 import { Home, Room } from "./components/screens";
-import { NavBar, ContainerApp } from "./components/ui";
+import { NavBar, ContainerApp, Footer } from "./components/ui";
 
 const socket = io.connect("/");
 
@@ -20,6 +20,7 @@ const App = () => {
             <Room socket={socket} />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </ContainerApp>
   );

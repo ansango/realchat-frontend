@@ -6,7 +6,7 @@ export const Room = ({ socket }) => {
 
   return (
     <>
-      <h1 className="capitalize py-14 text-2xl font-bold">{roomName} 🏠</h1>
+      <h1 className="capitalize py-14 text-2xl lg:text-4xl font-bold">{roomName} 🏠</h1>
       <Chat roomName={roomName} userName={userName} socket={socket} />
       <Process />
     </>
