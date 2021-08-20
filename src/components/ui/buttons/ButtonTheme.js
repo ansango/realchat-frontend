@@ -4,7 +4,10 @@ import { ButtonBase } from "./ButtonBase";
 
 export const ButtonTheme = () => {
   const [colorTheme, setTheme] = useTheme();
-  const onTheme = () => setTheme(colorTheme);
+
+  const onTheme = () => {
+    setTheme(colorTheme);
+  };
   return (
     <ButtonBase onClick={onTheme} kind={"blank"}>
       {colorTheme === "dark" ? (

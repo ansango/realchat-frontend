@@ -11,7 +11,7 @@ const App = () => {
   return (
     <ContainerApp>
       <Router>
-        <NavBar />
+        <NavBar socket={socket} />
         <Switch>
           <Route path="/" exact>
             <Home socket={socket} />
