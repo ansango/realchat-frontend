@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
+import { Faq } from "./Faq";
 
 export const Process = () => {
   const state = useSelector((state) => state.ProcessReducer);
   return (
-    <div className="p-5 rounded-lg border border-blue-300 my-10 space-y-4">
+    <Faq title="Your messages are encrypted">
       <div>
         <h4 className="font-medium">Your encrypted message:</h4>
         <p>{state.cypher}</p>
@@ -12,6 +13,6 @@ export const Process = () => {
         <h4 className="font-medium">Your decrypted message:</h4>
         <p>{state.text}</p>
       </div>
-    </div>
+    </Faq>
   );
 };

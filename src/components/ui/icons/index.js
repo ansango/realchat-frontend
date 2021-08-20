@@ -1,4 +1,8 @@
-export { HiSun as SunIcon, HiMoon as MoonIcon } from "react-icons/hi";
+export {
+  HiSun as SunIcon,
+  HiMoon as MoonIcon,
+  HiChevronDown as ChevronIcon,
+} from "react-icons/hi";
 export {
   SiTailwindcss as TailwindIcon,
   SiReact as ReactIcon,
