@@ -6,7 +6,7 @@ import { ButtonBase } from "../buttons/ButtonBase";
 export const DialogBase = () => {
   const { title, description, isOpen, openModal, btnOk, btnCancel } =
     useContext(modalContext);
-  console.log(btnOk);
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -58,9 +58,7 @@ export const DialogBase = () => {
 
                 <div className="mt-4">
                   {btnOk?.active && (
-                    <ButtonBase onClick={() => openModal({ isOpen: false })}>
-                      OK
-                    </ButtonBase>
+                    <ButtonBase onClick={btnOk.action}>OK</ButtonBase>
                   )}
                   {btnCancel?.active && (
                     <ButtonBase

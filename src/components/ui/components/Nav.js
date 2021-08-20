@@ -6,20 +6,35 @@ import { modalContext } from "../dialogs/DialogContex";
 export const NavBar = ({ socket }) => {
   const { pathname } = useLocation();
   const router = useHistory();
-  const { action, setModal, openModal } = useContext(modalContext);
+  const { setModal, openModal } = useContext(modalContext);
 
   const handleClick = () => {
-    setModal({ title: "closing session", description: "are you sure?", });
     if (pathname !== "/") {
       openModal({ isOpen: true });
-      
-      if (action === "ok") {
-        console.log(action);
-        socket.emit("forceDisconnect");
-        router.push("/");
-        window.location.reload();
-      }
     }
+    setModal({
+      title: "closing session",
+      description: "are you sure?",
+      btnOk: {
+        active: true,
+        text: "OK",
+        action: () => {
+          openModal({ isOpen: false });
+          socket.emit("forceDisconnect");
+          router.push("/");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        },
+      },
+      btnCancel: {
+        active: true,
+        text: "Cancel",
+        action: () => {
+          openModal({ isOpen: false });
+        },
+      },
+    });
   };
 
   return (
