@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { DialogBase } from "../ui";
 import { ButtonBase } from "../ui/buttons/ButtonBase";
+import { modalContext } from "../ui/dialogs/DialogContex";
 import { FormLabel, FormInput } from "../ui/forms";
 
 export const Home = ({ socket }) => {
   const router = useHistory();
-  
+
+  const { setModal, openModal } = useContext(modalContext);
 
   const [formValues, handleInputChange] = useForm({
     userName: "",
@@ -20,7 +21,11 @@ export const Home = ({ socket }) => {
     e.preventDefault();
 
     if (userName.trim().length === 0 || roomName.trim().length === 0) {
-      //setIsOpenDialog(true);
+      setModal({
+        title: "Enter wright values",
+        description: "Please username and roomname must be valid",
+      });
+      openModal({ isOpen: true });
       return;
     }
     socket.emit("joinRoom", { userName, roomName });

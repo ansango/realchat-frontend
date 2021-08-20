@@ -1,17 +1,20 @@
+import { useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { ButtonTheme } from "../buttons/ButtonTheme";
+import { modalContext } from "../dialogs/DialogContex";
 
 export const NavBar = ({ socket }) => {
   const { pathname } = useLocation();
   const router = useHistory();
+  const { setModal, openModal } = useContext(modalContext);
 
   const handleClick = () => {
     if (pathname !== "/") {
-      if (window.confirm("end session")) {
-        socket.emit("forceDisconnect");
-        router.push("/");
-        window.location.reload();
-      }
+      setModal({ title: "closing session", description: "are you sure?" });
+      openModal({ isOpen: true });
+      //socket.emit("forceDisconnect");
+      //router.push("/");
+      //window.location.reload();
     }
   };
 
