@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import { DialogBase } from "../ui";
 import { ButtonBase } from "../ui/buttons/ButtonBase";
 import { FormLabel, FormInput } from "../ui/forms";
 
 export const Home = ({ socket }) => {
   const router = useHistory();
+  
 
   const [formValues, handleInputChange] = useForm({
     userName: "",
@@ -17,7 +20,7 @@ export const Home = ({ socket }) => {
     e.preventDefault();
 
     if (userName.trim().length === 0 || roomName.trim().length === 0) {
-      alert("Please enter user and room!");
+      //setIsOpenDialog(true);
       return;
     }
     socket.emit("joinRoom", { userName, roomName });
